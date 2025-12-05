@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jordan Subbiah | Civil Engineer Portfolio
+
+A modern, responsive portfolio website for a civil engineer. Built with Next.js
+15, Tailwind CSS v4, and GSAP animations.
+
+## Features
+
+- **Multi-theme support** - 8 colour schemes (Purple, Blue, Red, Green, Orange,
+  Teal, Pink, Monochrome)
+- **Smooth animations** - GSAP ScrollTrigger for scroll-based reveals
+- **Typewriter effect** - Dynamic role display in hero section
+- **Responsive design** - Mobile-first approach with adaptive layouts
+- **Code-based graphics** - SVG and CSS components replace static images
+
+## Tech Stack
+
+- [Next.js 15](https://nextjs.org) - React framework with App Router
+- [Tailwind CSS v4](https://tailwindcss.com) - Utility-first CSS
+- [GSAP](https://gsap.com) - Animation library
+- [react-icons](https://react-icons.github.io/react-icons/) - Icon library
+- [react-simple-typewriter](https://www.npmjs.com/package/react-simple-typewriter) -
+  Typewriter effect
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Theme Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Change the colour theme by modifying the `THEME` constant in `app/layout.tsx`:
 
-## Learn More
+```tsx
+// Options: "purple" | "blue" | "red" | "green" | "orange" | "teal" | "pink" | "monochrome"
+const THEME = "blue";
+```
 
-To learn more about Next.js, take a look at the following resources:
+Or use the theme picker in the header to switch themes at runtime.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```txt
+├── app/
+│   ├── globals.css      # Theme variables & global styles
+│   ├── layout.tsx       # Root layout with theme config
+│   └── page.tsx         # Home page
+├── components/
+│   ├── icons/           # SVG & CSS graphic components
+│   │   ├── CurvedArrow.tsx
+│   │   ├── EllipseHighlight.tsx
+│   │   └── index.ts
+│   ├── Header.tsx       # Navigation with theme picker
+│   ├── HereSection.tsx  # Hero section
+│   ├── WorkExperience.tsx
+│   ├── TechStack.tsx    # Skills visualization
+│   ├── ProjectsSection.tsx
+│   ├── ContactSection.tsx
+│   ├── Footer.tsx
+│   └── ScrollReveal.tsx # GSAP animation wrapper
+└── public/
+    └── images/          # Avatar & project images
+```
 
-## Deploy on Vercel
+## Customisation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Content
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Update the following files to personalise:
+
+- `components/HereSection.tsx` - Name, tagline, bio
+- `components/WorkExperience.tsx` - Services offered
+- `components/TechStack.tsx` - Skills & tools
+- `components/ProjectsSection.tsx` - Featured projects
+- `components/ContactSection.tsx` - Contact info & social links
+- `app/layout.tsx` - Page title & meta description
+
+### Images
+
+Add your images to `public/images/`:
+
+- `avatar.png` - Profile photo (240x240)
+- `Portfolio.png` - Project screenshots
+
+## Deployment
+
+Deploy easily on [Vercel](https://vercel.com):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+## License
+
+MIT
