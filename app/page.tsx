@@ -7,10 +7,9 @@ import WorkExperience from "@/components/WorkExperience";
 const Home = () => {
   return (
     <>
-      <main className="mx-auto max-w-7xl px-6 lg:px-8">
+      <main className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <HeroSection />
         <TechStack />
-
         <ProjectsSection />
         <WorkExperience />
         <ContactSection />

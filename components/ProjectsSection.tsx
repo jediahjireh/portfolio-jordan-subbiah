@@ -9,10 +9,10 @@ import ScrollReveal from "@/components/ScrollReveal";
 const ProjectsSection = () => {
   return (
     <section id="projects" className="relative py-20">
-      {/* Background ambient glow */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[var(--accent-primary)] opacity-[0.03] blur-[120px]" />
-        <div className="absolute right-1/4 bottom-1/3 h-[400px] w-[400px] translate-x-1/2 rounded-full bg-[var(--accent-secondary)] opacity-[0.04] blur-[100px]" />
+      {/* Background ambient glow - extends beyond section */}
+      <div className="pointer-events-none absolute -inset-x-20 -top-40 -bottom-40">
+        <div className="absolute top-[20%] left-[10%] h-[550px] w-[550px] rounded-full bg-(--accent-primary) opacity-[0.025] blur-[140px]" />
+        <div className="absolute right-[5%] bottom-[20%] h-[500px] w-[500px] rounded-full bg-(--accent-secondary) opacity-[0.03] blur-[130px]" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4">

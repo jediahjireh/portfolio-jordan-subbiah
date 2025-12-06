@@ -7,10 +7,10 @@ import ScrollReveal from "@/components/ScrollReveal";
 const WorkExperience = () => {
   return (
     <section id="about" className="relative py-20">
-      {/* Background ambient glow */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-(--accent-primary) opacity-[0.03] blur-[120px]" />
-        <div className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] translate-x-1/2 rounded-full bg-(--accent-secondary) opacity-[0.03] blur-[100px]" />
+      {/* Background ambient glow - extends beyond section */}
+      <div className="pointer-events-none absolute -inset-x-20 -top-40 -bottom-40">
+        <div className="absolute top-[30%] left-[20%] h-[500px] w-[500px] rounded-full bg-(--accent-primary) opacity-[0.02] blur-[140px]" />
+        <div className="absolute right-[15%] bottom-[10%] h-[450px] w-[450px] rounded-full bg-(--accent-secondary) opacity-[0.025] blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4">
