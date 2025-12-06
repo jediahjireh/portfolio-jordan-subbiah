@@ -4,36 +4,43 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { headerContent, navLinks } from "@/config/header";
-import { HiBars3 } from "react-icons/hi2";
-import { HiSwatch } from "react-icons/hi2";
+import {
+  DEFAULT_THEME,
+  THEMES,
+  THEME_COLORS,
+  type Theme,
+} from "@/config/theme";
+import { HiBars3, HiSwatch } from "react-icons/hi2";
 
-const THEMES = [
-  "purple",
-  "blue",
-  "red",
-  "green",
-  "orange",
-  "teal",
-  "pink",
-  "monochrome",
-] as const;
-type Theme = (typeof THEMES)[number];
+// Generate SVG favicon dynamically
+const generateFavicon = (logo: string, color: string): string => {
+  const fontSize = logo.length > 3 ? 9 : 11;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <rect width="32" height="32" rx="6" fill="#0a0a0f"/>
+    <text x="16" y="21" font-family="system-ui, -apple-system, sans-serif" font-size="${fontSize}" font-weight="700" fill="${color}" text-anchor="middle">${logo}</text>
+  </svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+};
 
-const THEME_COLORS: Record<Theme, string> = {
-  purple: "#7127BA",
-  blue: "#3b82f6",
-  red: "#ef4444",
-  green: "#22c55e",
-  orange: "#f97316",
-  teal: "#14b8a6",
-  pink: "#ec4899",
-  monochrome: "#a1a1aa",
+const updateFavicon = (logo: string, color: string) => {
+  const faviconUrl = generateFavicon(logo, color);
+
+  // Remove existing favicon links
+  const existingLinks = document.querySelectorAll('link[rel="icon"]');
+  existingLinks.forEach((link) => link.remove());
+
+  // Add new favicon
+  const link = document.createElement("link");
+  link.rel = "icon";
+  link.type = "image/svg+xml";
+  link.href = faviconUrl;
+  document.head.appendChild(link);
 };
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState<Theme>("blue");
+  const [currentTheme, setCurrentTheme] = useState<Theme>(DEFAULT_THEME);
   const [showThemePicker, setShowThemePicker] = useState(false);
 
   useEffect(() => {
@@ -42,6 +49,11 @@ const Header = () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Update favicon when theme changes
+  useEffect(() => {
+    updateFavicon(headerContent.logo, THEME_COLORS[currentTheme]);
+  }, [currentTheme]);
 
   const handleThemeChange = (theme: Theme) => {
     setCurrentTheme(theme);

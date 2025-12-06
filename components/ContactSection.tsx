@@ -29,7 +29,7 @@ const ContactSection = () => {
           <div className="mt-6 text-white/80">
             <Link
               href={`mailto:${contactContent.email}`}
-              className="text-[var(--accent-secondary)] transition-colors hover:underline hover:underline-offset-4"
+              className="relative text-[var(--accent-secondary)] transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[var(--accent-secondary)] after:transition-all after:duration-300 hover:after:w-full"
             >
               {contactContent.cta}
             </Link>
