@@ -1,62 +1,73 @@
+"use client";
+
 import { experienceItems, sectionContent } from "@/config/experience";
 
 import ScrollReveal from "@/components/ScrollReveal";
 
 const WorkExperience = () => {
   return (
-    <section id="about" className="relative py-24">
-      {/* glow effect */}
-      <div
-        className="pointer-events-none absolute top-0 left-1/2 h-[280px] w-[90vw] -translate-x-1/2 opacity-25 blur-[100px] sm:h-[380px] sm:w-[760px] md:h-[520px] md:w-[1000px]"
-        style={{
-          background: "var(--gradient-radial)",
-        }}
-      />
-      <div>
-        <h3 className="mb-8 text-2xl font-semibold text-white/90 md:text-3xl">
-          {sectionContent.title}
-        </h3>
+    <section id="about" className="relative py-28">
+      {/* Background ambient glow */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-(--accent-primary) opacity-[0.03] blur-[120px]" />
+        <div className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] translate-x-1/2 rounded-full bg-(--accent-secondary) opacity-[0.03] blur-[100px]" />
+      </div>
 
-        <ScrollReveal
-          stagger={0.1}
-          className="grid grid-cols-1 gap-6 sm:gap-7 md:grid-cols-2 md:gap-8"
-        >
-          {experienceItems.map((item, index) => (
-            <article
-              key={index}
-              className="group relative overflow-hidden rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] p-5 shadow-[0_8px_32px_var(--glow-primary)] transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-[var(--card-border-hover)] hover:shadow-[0_12px_48px_var(--glow-primary)] sm:p-6 md:p-7"
-            >
-              {/* card gradient */}
-              <div
-                className="pointer-events-none absolute inset-0 rounded-2xl opacity-50 transition-opacity duration-500 group-hover:opacity-70"
-                style={{
-                  background: "var(--gradient-card)",
-                }}
-              ></div>
+      <div className="relative mx-auto max-w-6xl px-4">
+        {/* Section header with accent line */}
+        <div className="mb-12 flex items-center gap-4">
+          <div className="h-px w-12 bg-gradient-to-r from-[var(--accent-secondary)] to-transparent" />
+          <h3 className="text-2xl font-semibold tracking-tight text-white/90 md:text-3xl">
+            {sectionContent.title}
+          </h3>
+        </div>
 
-              <div className="relative flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:gap-6 md:gap-8">
-                {/* icon */}
-                <div className="relative h-16 w-16 shrink-0 text-[var(--accent-secondary)] drop-shadow-[0_6px_20px_var(--glow-primary)] transition-transform duration-500 ease-out group-hover:-translate-y-0.5 sm:size-20 md:size-24">
-                  {item.icon}
-                </div>
+        {/* Grid container */}
+        <ScrollReveal stagger={0.1}>
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
+            {experienceItems.map((item, index) => (
+              <article
+                key={index}
+                className="group relative overflow-hidden rounded-2xl border border-white/8 bg-[var(--card-bg)] transition-all duration-500 hover:border-[var(--accent-primary)]/30"
+              >
+                {/* Floating accent ring on hover */}
+                <div className="absolute -top-4 -right-4 h-16 w-16 rounded-full border border-[var(--accent-primary)]/20 opacity-0 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100" />
 
-                {/* text content */}
-                <div className="flex-1 text-center sm:text-left">
-                  <p className="text-xs text-[var(--accent-tertiary)]">
-                    {item.period}
-                  </p>
-                  <h4 className="mt-1 mb-1 text-base font-semibold text-white sm:text-lg md:text-xl">
-                    {item.role}
-                  </h4>
-                  <p className="text-sm text-white/80">{item.title}</p>
-                  <p className="mt-1 text-xs text-white/50">{item.location}</p>
-                  <p className="mx-auto mt-3 max-w-sm text-xs text-white/60 sm:mx-0 md:text-sm">
+                {/* Top accent bar */}
+                <div className="absolute top-0 right-0 h-0.5 w-0 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] transition-all duration-500 group-hover:w-20" />
+
+                <div className="relative p-5">
+                  {/* Header row: icon + title + period */}
+                  <div className="mb-3 flex items-start gap-3">
+                    <div className="relative shrink-0">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/10 text-[var(--accent-secondary)] transition-all duration-300 group-hover:border-[var(--accent-primary)]/40 group-hover:shadow-[0_0_20px_var(--glow-subtle)]">
+                        <div className="h-5 w-5">{item.icon}</div>
+                      </div>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-start justify-between gap-2">
+                        <h4 className="text-base font-semibold text-white/90 transition-colors duration-300 group-hover:text-white">
+                          {item.role}
+                        </h4>
+                        <span className="shrink-0 text-[10px] font-medium tracking-widest text-[var(--accent-secondary)] uppercase">
+                          {item.period}
+                        </span>
+                      </div>
+                      <p className="mt-0.5 text-sm text-white/70">
+                        {item.title}
+                      </p>
+                      <p className="text-xs text-white/40">{item.location}</p>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-xs leading-relaxed text-white/55 transition-colors duration-300 group-hover:text-white/65">
                     {item.description}
                   </p>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </ScrollReveal>
       </div>
     </section>

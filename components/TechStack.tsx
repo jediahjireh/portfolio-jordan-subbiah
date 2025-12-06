@@ -96,8 +96,14 @@ const TechStack = () => {
     breakpoint === "xs" ? 380 : breakpoint === "sm" ? 460 : 560;
 
   return (
-    <section id="lab" className="relative pb-28">
-      <ScrollReveal stagger={0.1} className="text-center">
+    <section id="lab" className="relative py-28">
+      {/* Background ambient glow */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/3 right-1/4 h-[500px] w-[500px] translate-x-1/2 rounded-full bg-(--accent-secondary) opacity-[0.03] blur-[120px]" />
+        <div className="absolute bottom-1/4 left-1/4 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-(--accent-primary) opacity-[0.03] blur-[100px]" />
+      </div>
+
+      <ScrollReveal stagger={0.1} className="relative text-center">
         {/*
         <div className="mb-16">
           <p className="mb-6 text-white/70">
@@ -180,7 +186,7 @@ const TechStack = () => {
           <div className="xs:px-4 absolute top-0 right-0 left-0 flex justify-between px-2 sm:px-8">
             {softSkills.map((skill, i) => (
               <div key={i} className="group flex flex-col items-center gap-1">
-                <div className="xs:h-11 xs:w-11 flex h-10 w-10 items-center justify-center rounded-full border border-[var(--accent-secondary)]/50 bg-[var(--card-bg)] text-[var(--accent-secondary)] shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:border-[var(--accent-secondary)] group-hover:shadow-[0_0_20px_var(--glow-secondary)] sm:h-12 sm:w-12">
+                <div className="xs:h-11 xs:w-11 flex h-10 w-10 items-center justify-center rounded-full border border-[var(--accent-secondary)]/50 bg-[var(--card-bg)] text-[var(--accent-secondary)] shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:cursor-pointer group-hover:border-[var(--accent-secondary)] group-hover:shadow-[0_0_20px_var(--glow-secondary)] sm:h-12 sm:w-12">
                   <span className="xs:text-xl text-lg sm:text-2xl">
                     {skill.icon}
                   </span>
@@ -252,7 +258,7 @@ const TechStack = () => {
                     }}
                   >
                     <div
-                      className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${categoryColors[skill.category]} xs:h-10 xs:w-10 xs:p-1.5 p-1 text-white shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_var(--glow-primary)] sm:h-12 sm:w-12 sm:p-2`}
+                      className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${categoryColors[skill.category]} xs:h-10 xs:w-10 xs:p-1.5 p-1 text-white shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:cursor-pointer group-hover:shadow-[0_0_20px_var(--glow-primary)] sm:h-12 sm:w-12 sm:p-2`}
                     >
                       <span className="xs:text-lg text-sm sm:text-xl">
                         {skill.icon}
@@ -285,7 +291,7 @@ const TechStack = () => {
                     }}
                   >
                     <div
-                      className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${categoryColors[skill.category]} xs:h-10 xs:w-10 xs:p-1.5 p-1 text-white shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_var(--glow-primary)] sm:h-12 sm:w-12 sm:p-2`}
+                      className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${categoryColors[skill.category]} xs:h-10 xs:w-10 xs:p-1.5 p-1 text-white shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:cursor-pointer group-hover:shadow-[0_0_20px_var(--glow-primary)] sm:h-12 sm:w-12 sm:p-2`}
                     >
                       <span className="xs:text-lg text-sm sm:text-xl">
                         {skill.icon}
