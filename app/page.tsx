@@ -10,8 +10,9 @@ const Home = () => {
       <main className="mx-auto max-w-7xl px-6 lg:px-8">
         <HeroSection />
         <TechStack />
-        <WorkExperience />
+
         <ProjectsSection />
+        <WorkExperience />
         <ContactSection />
       </main>
     </>

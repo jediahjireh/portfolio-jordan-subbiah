@@ -8,7 +8,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="relative py-28">
+    <section id="projects" className="relative py-20">
       {/* Background ambient glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[var(--accent-primary)] opacity-[0.03] blur-[120px]" />

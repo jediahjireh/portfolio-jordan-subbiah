@@ -96,7 +96,7 @@ const TechStack = () => {
     breakpoint === "xs" ? 380 : breakpoint === "sm" ? 460 : 560;
 
   return (
-    <section id="lab" className="relative py-28">
+    <section id="lab" className="relative py-20">
       {/* Background ambient glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-1/3 right-1/4 h-[500px] w-[500px] translate-x-1/2 rounded-full bg-(--accent-secondary) opacity-[0.03] blur-[120px]" />

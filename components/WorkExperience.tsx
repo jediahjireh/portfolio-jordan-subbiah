@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const WorkExperience = () => {
   return (
-    <section id="about" className="relative py-28">
+    <section id="about" className="relative py-20">
       {/* Background ambient glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-(--accent-primary) opacity-[0.03] blur-[120px]" />

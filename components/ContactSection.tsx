@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="relative py-28">
+    <section id="contact" className="relative py-20">
       {/* Background ambient glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute bottom-1/4 left-1/3 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-(--accent-secondary) opacity-[0.03] blur-[100px]" />
