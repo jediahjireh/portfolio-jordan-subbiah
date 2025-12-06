@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import Link from "next/link";
 
+import { headerContent, navLinks } from "@/config/header";
 import { HiBars3 } from "react-icons/hi2";
 import { HiSwatch } from "react-icons/hi2";
 
@@ -27,19 +28,6 @@ const THEME_COLORS: Record<Theme, string> = {
   teal: "#14b8a6",
   pink: "#ec4899",
   monochrome: "#a1a1aa",
-};
-
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#lab" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-];
-
-const headerContent = {
-  logo: "JRS",
-  themePickerLabel: "Choose Theme",
 };
 
 const Header = () => {
@@ -77,7 +65,7 @@ const Header = () => {
           {headerContent.logo}
         </Link>
 
-        {/* desktop naviation menu */}
+        {/* desktop navigation menu */}
         <nav className="hidden space-x-10 text-lg font-medium text-white/80 md:flex">
           {navLinks.map((link) => (
             <Link

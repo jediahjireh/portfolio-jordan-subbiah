@@ -2,112 +2,15 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-import { FaDraftingCompass, FaHardHat } from "react-icons/fa";
-import { GiConcreteBag, GiMountainRoad, GiWaterDrop } from "react-icons/gi";
 import {
-  HiCalculator,
-  HiClipboardDocumentCheck,
-  HiCube,
-  HiLightBulb,
-} from "react-icons/hi2";
-import { MdEngineering } from "react-icons/md";
-import { SiAutodesk } from "react-icons/si";
-import {
-  TbBuildingBridge2,
-  TbClock,
-  TbMathFunction,
-  TbMessageCircle,
-  TbRulerMeasure,
-  TbUsers,
-} from "react-icons/tb";
+  categoryColors,
+  categoryLabels,
+  sectionContent,
+  skills,
+  softSkills,
+} from "@/config/skills";
 
 import ScrollReveal from "@/components/ScrollReveal";
-
-type Skill = {
-  name: string;
-  icon: React.ReactNode;
-  category: "software" | "engineering" | "coursework" | "fieldwork";
-};
-
-// Technical skills for orbital rings
-const skills: Skill[] = [
-  // Software & Tools
-  { name: "AutoCAD", icon: <SiAutodesk />, category: "software" },
-  { name: "SolidWorks", icon: <HiCube />, category: "software" },
-  { name: "Drafting", icon: <FaDraftingCompass />, category: "software" },
-  // Engineering Skills
-  {
-    name: "Civil Design",
-    icon: <TbBuildingBridge2 />,
-    category: "engineering",
-  },
-  { name: "Surveying", icon: <TbRulerMeasure />, category: "engineering" },
-  // Coursework
-  { name: "Applied Maths", icon: <TbMathFunction />, category: "coursework" },
-  { name: "Fluid Mechanics", icon: <GiWaterDrop />, category: "coursework" },
-  {
-    name: "Materials Science",
-    icon: <GiConcreteBag />,
-    category: "coursework",
-  },
-  { name: "Geotechnical", icon: <GiMountainRoad />, category: "coursework" },
-  {
-    name: "Structural Analysis",
-    icon: <HiCalculator />,
-    category: "coursework",
-  },
-  // Fieldwork & Practical
-  { name: "Site Inspection", icon: <FaHardHat />, category: "fieldwork" },
-  {
-    name: "Quality Control",
-    icon: <HiClipboardDocumentCheck />,
-    category: "fieldwork",
-  },
-  {
-    name: "Project Coordination",
-    icon: <MdEngineering />,
-    category: "fieldwork",
-  },
-];
-
-// Soft skills - displayed at top with curved lines
-type SoftSkill = {
-  name: string;
-  icon: React.ReactNode;
-};
-
-const softSkills: SoftSkill[] = [
-  { name: "Problem Solving", icon: <HiLightBulb /> },
-  { name: "Teamwork", icon: <TbUsers /> },
-  { name: "Communication", icon: <TbMessageCircle /> },
-  { name: "Time Management", icon: <TbClock /> },
-];
-
-const categoryColors = {
-  software: "from-blue-500 to-cyan-400",
-  engineering: "from-[var(--accent-primary)] to-[var(--accent-secondary)]",
-  coursework: "from-amber-500 to-orange-400",
-  fieldwork: "from-emerald-500 to-teal-400",
-};
-
-const categoryLabels = {
-  software: "Software",
-  engineering: "Engineering",
-  coursework: "Coursework",
-  fieldwork: "Fieldwork",
-};
-
-const sectionContent = {
-  intro: "I would love to join a",
-  highlight: "ground-breaking",
-  outro: "team",
-  tagline: "that values building infrastructure people can actually stand on",
-  curveToggleLabel: "Curve Style Preview",
-  curveOptions: {
-    quadratic: "Quadratic (Fan)",
-    cubic: "Cubic (S-Curve)",
-  },
-};
 
 // Define orbital configuration - which skills go on which ring
 const orbitConfig = {
@@ -193,17 +96,20 @@ const TechStack = () => {
     breakpoint === "xs" ? 380 : breakpoint === "sm" ? 460 : 560;
 
   return (
-    <section id="lab" className="relative py-28">
+    <section id="lab" className="relative pb-28">
       <ScrollReveal stagger={0.1} className="text-center">
-        <p className="mb-6 text-white/70">
-          {sectionContent.intro}{" "}
-          <span className="text-[var(--accent-secondary)]">
-            {sectionContent.highlight}
-          </span>{" "}
-          {sectionContent.outro}
-        </p>
-        <p className="mb-16 text-sm text-white/50">{sectionContent.tagline}</p>
-
+        {/*
+        <div className="mb-16">
+          <p className="mb-6 text-white/70">
+            {sectionContent.intro}{" "}
+            <span className="text-[var(--accent-secondary)]">
+              {sectionContent.highlight}
+            </span>{" "}
+            {sectionContent.outro}
+          </p>
+          <p className="text-sm text-white/50">{sectionContent.tagline}</p>
+        </div>
+        */}
         {/* Full visualization container */}
         <div
           ref={containerRef}

@@ -1,5 +1,5 @@
 import ContactSection from "@/components/ContactSection";
-import HereSection from "@/components/HereSection";
+import HeroSection from "@/components/HeroSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import TechStack from "@/components/TechStack";
 import WorkExperience from "@/components/WorkExperience";
@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       <main className="mx-auto max-w-7xl px-6 lg:px-8">
-        <HereSection />
+        <HeroSection />
         <TechStack />
         <WorkExperience />
         <ProjectsSection />

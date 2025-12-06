@@ -1,7 +1,4 @@
-const footerContent = {
-  name: "Jordan Subbiah",
-  tagline: "Built on solid foundations.",
-};
+import { footerContent } from "@/config/footer";
 
 const Footer = () => {
   return (

@@ -63,7 +63,7 @@ Or use the theme picker in the header to switch themes at runtime.
 │   │   ├── EllipseHighlight.tsx
 │   │   └── index.ts
 │   ├── Header.tsx       # Navigation with theme picker
-│   ├── HereSection.tsx  # Hero section
+│   ├── HeroSection.tsx  # Hero section
 │   ├── WorkExperience.tsx
 │   ├── TechStack.tsx    # Skills visualization
 │   ├── ProjectsSection.tsx
@@ -80,7 +80,7 @@ Or use the theme picker in the header to switch themes at runtime.
 
 Update the following files to personalise:
 
-- `components/HereSection.tsx` - Name, tagline, bio
+- `components/HeroSection.tsx` - Name, tagline, bio
 - `components/WorkExperience.tsx` - Services offered
 - `components/TechStack.tsx` - Skills & tools
 - `components/ProjectsSection.tsx` - Featured projects
