@@ -8,7 +8,7 @@ export const projects: Project[] = [
       "Focused on developing innovative infrastructure solutions that balance structural integrity with environmental sustainability. Applying knowledge from Applied Mathematics, Fluid Mechanics, and Materials Science to tackle real-world civil engineering challenges in South Africa.",
     tags: ["AutoCAD", "SolidWorks"],
     imageUrl:
-      "https://media.licdn.com/dms/image/v2/D4E16AQGbzOd6Uny8Zg/profile-displaybackgroundimage-shrink_350_1400/B4EZoHtGnLKsAc-/0/1761065860376?e=1766620800&v=beta&t=pnqGdbuBXsKUciLbRtidrvnHS4L97_bElim3P6_-M34",
+      "https://img.freepik.com/free-photo/aerial-view-cityscape_116348-14.jpg?semt=ais_hybrid&w=740&q=80",
     imageAlt: "Infrastructure design",
   },
   {

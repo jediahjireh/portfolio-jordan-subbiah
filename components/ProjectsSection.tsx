@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import { projects } from "@/config/projects";
@@ -6,91 +8,130 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="relative space-y-24 py-28">
-      {projects.map((project, index) => {
-        const isReversed = index % 2 !== 0;
+    <section id="projects" className="relative py-28">
+      {/* Background ambient glow */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[var(--accent-primary)] opacity-[0.03] blur-[120px]" />
+        <div className="absolute right-1/4 bottom-1/3 h-[400px] w-[400px] translate-x-1/2 rounded-full bg-[var(--accent-secondary)] opacity-[0.04] blur-[100px]" />
+      </div>
 
-        return (
-          <div key={project.title}>
-            <div
-              className="pointer-events-none absolute top-8 right-0 left-1/3 -z-10 h-[420px] opacity-25 blur-[100px]"
-              style={{
-                background: "var(--gradient-hero)",
-              }}
-            />
-            <ScrollReveal
-              stagger={0.1}
-              delay={index * 0.2}
-              className="grid grid-cols-1 items-center md:grid-cols-2"
-            >
-              {/* text content */}
-              <div
-                className={`relative z-10 ${isReversed ? "md:order-2" : ""}`}
+      <div className="relative mx-auto max-w-6xl px-4">
+        <div className="space-y-32">
+          {projects.map((project, index) => {
+            const isReversed = index % 2 !== 0;
+
+            return (
+              <ScrollReveal
+                key={project.title}
+                stagger={0.1}
+                delay={index * 0.2}
               >
-                {/* heading */}
-                <div className={`mb-12 ${isReversed ? "text-right" : ""}`}>
-                  <p className="text-xs text-[var(--accent-tertiary)]">
-                    {project.label}
-                  </p>
-                  <h3 className="text-2xl font-semibold text-white/90 md:text-3xl">
-                    {project.title}
-                  </h3>
-                </div>
+                <div
+                  className={`group relative flex flex-col gap-8 md:flex-row md:items-center md:gap-12 ${isReversed ? "md:flex-row-reverse" : ""}`}
+                >
+                  {/* Project visual */}
+                  <div className="relative flex-1">
+                    {/* Floating accent ring */}
+                    <div
+                      className={`absolute -top-6 ${isReversed ? "-left-6" : "-right-6"} h-24 w-24 rounded-full border border-[var(--accent-primary)]/20 opacity-0 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100`}
+                    />
+                    <div
+                      className={`absolute -bottom-4 ${isReversed ? "-right-4" : "-left-4"} h-16 w-16 rounded-full border border-[var(--accent-secondary)]/30 opacity-0 transition-all duration-700 group-hover:scale-125 group-hover:opacity-100`}
+                    />
 
-                {/* description */}
-                <div
-                  className={`relative z-20 max-w-5xl rounded-2xl border border-white/10 bg-white/6 p-5 shadow-[0_6px_40px_var(--glow-primary)] backdrop-blur-sm md:-mt-6 ${isReversed ? "md:-ml-24" : "md:-mr-24"}`}
-                >
-                  <p className="p-4 text-sm text-white/75">
-                    {project.description}
-                  </p>
-                  <div
-                    className="pointer-events-none absolute -inset-px rounded-[14px] opacity-60"
-                    style={{
-                      background: "var(--gradient-border)",
-                    }}
-                  />
-                </div>
-                <div
-                  className={`mt-6 ml-2 flex space-x-3 text-white/60 ${isReversed ? "justify-end" : "justify-start"}`}
-                >
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="text-xs">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+                    {/* Image container */}
+                    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[var(--card-bg)] shadow-[0_0_80px_-20px_var(--glow-primary)] transition-all duration-500 group-hover:border-[var(--accent-primary)]/40 group-hover:shadow-[0_0_100px_-15px_var(--glow-primary)]">
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        {project.imageUrl ? (
+                          <>
+                            <Image
+                              src={project.imageUrl}
+                              alt={project.imageAlt || project.title}
+                              fill
+                              className="object-cover transition-all duration-700 group-hover:scale-105"
+                            />
+                            {/* Gradient overlay on image */}
+                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--background)]/80 via-transparent to-transparent" />
+                          </>
+                        ) : (
+                          <div className="flex h-full items-center justify-center bg-gradient-to-br from-[var(--accent-primary)]/15 via-[var(--card-bg)] to-[var(--accent-secondary)]/10">
+                            {/* Orbital decoration for placeholder */}
+                            <div className="absolute h-32 w-32 animate-[spin_20s_linear_infinite] rounded-full border border-[var(--accent-primary)]/20" />
+                            <div className="absolute h-48 w-48 animate-[spin_30s_linear_infinite_reverse] rounded-full border border-[var(--accent-secondary)]/15" />
+                            <span className="relative z-10 text-5xl font-bold tracking-tight text-white/30 sm:text-6xl">
+                              {project.placeholder}
+                            </span>
+                          </div>
+                        )}
+                      </div>
 
-              {/* project image */}
-              <div className={`relative ${isReversed ? "md:order-1" : ""}`}>
-                <div
-                  tabIndex={0}
-                  className="group cursor-pointer overflow-hidden rounded-2xl border border-[var(--card-border)] bg-[var(--background)] shadow-[0_0_50px_var(--glow-primary)] transition-transform duration-500 ease-out hover:-translate-y-0.5 focus:-translate-y-0.5"
-                >
-                  {project.imageUrl ? (
-                    <div className="h-[360px] overflow-hidden">
-                      <Image
-                        src={project.imageUrl}
-                        alt={project.imageAlt || project.title}
-                        width={1400}
-                        height={350}
-                        className="h-full w-full object-cover"
+                      {/* Corner accent */}
+                      <div
+                        className={`absolute top-0 ${isReversed ? "left-0 rounded-br-2xl" : "right-0 rounded-bl-2xl"} h-1 w-16 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] opacity-60 transition-all duration-300 group-hover:w-24 group-hover:opacity-100`}
                       />
                     </div>
-                  ) : (
-                    <div className="flex h-[250px] items-center justify-center overflow-hidden bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-hover)] md:h-[360px]">
-                      <span className="text-6xl font-bold text-white/90">
-                        {project.placeholder}
+
+                    {/* Floating index number */}
+                    <div
+                      className={`absolute -bottom-6 ${isReversed ? "right-8" : "left-8"} flex h-12 w-12 items-center justify-center rounded-full border border-[var(--accent-primary)]/30 bg-[var(--background)] text-sm font-medium text-[var(--accent-primary)] shadow-[0_0_30px_var(--glow-subtle)] transition-all duration-300 group-hover:scale-110 group-hover:border-[var(--accent-primary)]/60`}
+                    >
+                      0{index + 1}
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div
+                    className={`flex-1 ${isReversed ? "md:text-right" : ""}`}
+                  >
+                    {/* Label with line */}
+                    <div
+                      className={`flex items-center gap-3 ${isReversed ? "md:flex-row-reverse" : ""}`}
+                    >
+                      <div className="h-px w-8 bg-gradient-to-r from-[var(--accent-secondary)] to-transparent opacity-60" />
+                      <span className="text-[11px] font-medium tracking-[0.2em] text-[var(--accent-secondary)] uppercase">
+                        {project.label}
                       </span>
                     </div>
-                  )}
+
+                    {/* Title */}
+                    <h3 className="mt-4 text-2xl font-semibold tracking-tight text-white/90 transition-colors duration-300 group-hover:text-white sm:text-3xl">
+                      {project.title}
+                    </h3>
+
+                    {/* Description card */}
+                    <div className="relative mt-6">
+                      <div className="rounded-xl border border-white/8 bg-white/[0.03] p-5 backdrop-blur-sm transition-all duration-300 group-hover:border-white/15 group-hover:bg-white/[0.05]">
+                        <p className="text-sm leading-relaxed text-white/60 group-hover:text-white/70">
+                          {project.description}
+                        </p>
+                      </div>
+                      {/* Accent dot */}
+                      <div
+                        className={`absolute -top-1.5 ${isReversed ? "right-6" : "left-6"} h-3 w-3 rounded-full bg-[var(--accent-primary)] opacity-60 blur-[2px]`}
+                      />
+                    </div>
+
+                    {/* Tags */}
+                    <div
+                      className={`mt-6 flex flex-wrap gap-2 ${isReversed ? "md:justify-end" : ""}`}
+                    >
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="group/tag relative overflow-hidden rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] text-white/50 transition-all duration-300 hover:border-[var(--accent-primary)]/40 hover:text-white/80"
+                        >
+                          <span className="relative z-10">{tag}</span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-primary)]/10 to-transparent opacity-0 transition-opacity duration-300 group-hover/tag:opacity-100" />
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        );
-      })}
+              </ScrollReveal>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 };

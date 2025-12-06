@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "media.licdn.com",
         pathname: "/dms/image/**",
       },
+      {
+        protocol: "https",
+        hostname: "img.freepik.com",
+        pathname: "/free-photo/**",
+      },
     ],
   },
 };
