@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 import Image from "next/image";
 
@@ -12,6 +12,27 @@ import {
   CurvedArrow,
   EllipseHighlight,
 } from "@/components/icons";
+
+const heroContent = {
+  name: "Jordan Subbiah",
+  greeting: "Hi there! I am",
+  subtitle: "A Future Engineer who",
+  headline: {
+    line1: "Builds bridges",
+    line2: "not just",
+    highlight: "walls",
+  },
+  tagline: "(Unless you need a retaining wall. Then I build those too.)",
+  typewriterWords: [
+    "I'm a Civil Engineering Student.",
+    "I'm a Problem Solver.",
+    "I'm a Future Builder.",
+  ],
+  degree: "BSc (Hons) Civil Eng @ UKZN",
+  bio: "I'm a driven Civil Engineering student focused on developing sustainable and innovative infrastructure solutions. Passionate about applying technical knowledge and problem-solving skills to real-world engineering challenges, I'm eager to contribute to projects that shape a stronger, more resilient South Africa.",
+  avatarUrl:
+    "https://media.licdn.com/dms/image/v2/D4E03AQFk5KcN0KWXxg/profile-displayphoto-scale_400_400/B4EZo0j8s5KcAk-/0/1761818432166?e=1766620800&v=beta&t=JqJB9_Yd6kve7lHeCdnKDfZ7ppPtmO_m_T1d0n5Qa6g",
+};
 
 const HereSection = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -35,8 +56,8 @@ const HereSection = () => {
                   </div>
                 )}
                 <Image
-                  src="https://media.licdn.com/dms/image/v2/D4E03AQFk5KcN0KWXxg/profile-displayphoto-scale_400_400/B4EZo0j8s5KcAk-/0/1761818432166?e=1766620800&v=beta&t=JqJB9_Yd6kve7lHeCdnKDfZ7ppPtmO_m_T1d0n5Qa6g"
-                  alt="Jordan Subbiah"
+                  src={heroContent.avatarUrl}
+                  alt={heroContent.name}
                   fill
                   className={`object-cover transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
                   priority
@@ -51,9 +72,9 @@ const HereSection = () => {
                     <CurvedArrow />
                   </div>
                   <div className="-mt-6 shrink-0 md:-mt-10">
-                    <span>Hi there! I am </span>
+                    <span>{heroContent.greeting} </span>
                     <span className="text-[var(--accent-tertiary)]">
-                      Jordan Subbiah
+                      {heroContent.name}
                     </span>
                   </div>
                 </div>
@@ -64,16 +85,16 @@ const HereSection = () => {
           {/* headline */}
           <div className="w-full text-center md:w-auto md:pl-2 md:text-left">
             <p className="mb-2 text-sm text-white/60 md:text-base">
-              A Future Engineer who
+              {heroContent.subtitle}
             </p>
 
             <h1 className="text-4xl leading-[1.15] font-normal tracking-tight sm:text-5xl">
-              <span className="block">Builds bridges</span>
+              <span className="block">{heroContent.headline.line1}</span>
               <span className="block">
-                not just{" "}
+                {heroContent.headline.line2}{" "}
                 <span className="relative inline-block align-baseline">
                   <span className="relative z-10 text-[var(--accent-primary)]">
-                    walls
+                    {heroContent.headline.highlight}
                   </span>
                   <EllipseHighlight />
                 </span>
@@ -81,7 +102,7 @@ const HereSection = () => {
             </h1>
 
             <p className="mx-auto mt-2 max-w-md text-[10px] text-white/50 md:mx-0 md:max-w-lg md:text-xs">
-              (Unless you need a retaining wall. Then I build those too.)
+              {heroContent.tagline}
             </p>
           </div>
         </ScrollReveal>
@@ -93,11 +114,7 @@ const HereSection = () => {
         >
           <h2 className="text-3xl font-normal tracking-tight sm:text-4xl md:text-5xl">
             <Typewriter
-              words={[
-                "I'm a Civil Engineering Student.",
-                "I'm a Problem Solver.",
-                "I'm a Future Builder.",
-              ]}
+              words={heroContent.typewriterWords}
               typeSpeed={65}
               deleteSpeed={0}
               delaySpeed={600}
@@ -106,15 +123,9 @@ const HereSection = () => {
               loop={1}
             />
           </h2>
-          <p className="text-white/80">BSc (Hons) Civil Eng @ UKZN</p>
+          <p className="text-white/80">{heroContent.degree}</p>
 
-          <p className="mt-6 leading-7 text-white/70">
-            I&apos;m a driven Civil Engineering student focused on developing
-            sustainable and innovative infrastructure solutions. Passionate
-            about applying technical knowledge and problem-solving skills to
-            real-world engineering challenges, I&apos;m eager to contribute to
-            projects that shape a stronger, more resilient South Africa.
-          </p>
+          <p className="mt-6 leading-7 text-white/70">{heroContent.bio}</p>
         </ScrollReveal>
       </div>
     </section>

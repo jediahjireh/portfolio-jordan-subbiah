@@ -29,6 +29,19 @@ const THEME_COLORS: Record<Theme, string> = {
   monochrome: "#a1a1aa",
 };
 
+const navLinks = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#lab" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
+const headerContent = {
+  logo: "JRS",
+  themePickerLabel: "Choose Theme",
+};
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -61,41 +74,20 @@ const Header = () => {
           href="/"
           className="text-2xl font-extrabold text-[var(--accent-hover)]"
         >
-          JRS
+          {headerContent.logo}
         </Link>
 
         {/* desktop naviation menu */}
         <nav className="hidden space-x-10 text-lg font-medium text-white/80 md:flex">
-          <Link
-            href="#home"
-            className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
-          >
-            Home
-          </Link>
-          <Link
-            href="#about"
-            className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
-          >
-            About
-          </Link>
-          <Link
-            href="#lab"
-            className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
-          >
-            Skills
-          </Link>
-          <Link
-            href="#projects"
-            className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
-          >
-            Projects
-          </Link>
-          <Link
-            href="#contact"
-            className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
-          >
-            Contact
-          </Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -112,7 +104,7 @@ const Header = () => {
             {showThemePicker && (
               <div className="absolute right-0 mt-2 min-w-[200px] rounded-xl border border-[var(--card-border)] bg-[var(--card-bg)] p-4 shadow-[0_8px_32px_var(--glow-primary)] backdrop-blur-md">
                 <p className="mb-3 text-xs font-medium text-white/50">
-                  Choose Theme
+                  {headerContent.themePickerLabel}
                 </p>
                 <div className="grid grid-cols-4 gap-3">
                   {THEMES.map((theme) => (
@@ -155,41 +147,16 @@ const Header = () => {
       {isOpen && (
         <div className="px-6 pb-4 md:hidden">
           <div className="flex flex-col gap-3 text-base font-medium text-white/80">
-            <Link
-              href="#home"
-              className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
-              onClick={() => setIsOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              href="#about"
-              className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="#lab"
-              className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
-              onClick={() => setIsOpen(false)}
-            >
-              Skills
-            </Link>
-            <Link
-              href="#projects"
-              onClick={() => setIsOpen(false)}
-              className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
-            >
-              Projects
-            </Link>
-            <Link
-              href="#contact"
-              onClick={() => setIsOpen(false)}
-              className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
-            >
-              Contact
-            </Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="transition-colors duration-300 ease-out hover:text-[var(--accent-secondary)]"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       )}

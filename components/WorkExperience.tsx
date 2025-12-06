@@ -1,9 +1,11 @@
-import React from "react";
-
 import { HiAcademicCap } from "react-icons/hi2";
 import { TbBuildingSkyscraper, TbEngine, TbShoppingCart } from "react-icons/tb";
 
 import ScrollReveal from "@/components/ScrollReveal";
+
+const sectionContent = {
+  title: "Experience & Education",
+};
 
 type ExperienceItem = {
   title: string;
@@ -65,7 +67,7 @@ const WorkExperience = () => {
       />
       <div>
         <h3 className="mb-8 text-2xl font-semibold text-white/90 md:text-3xl">
-          Experience & Education
+          {sectionContent.title}
         </h3>
 
         <ScrollReveal

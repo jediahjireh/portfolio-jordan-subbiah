@@ -1,12 +1,16 @@
-import React from "react";
-
 import Link from "next/link";
 
 import { FaEnvelope, FaFacebook, FaLinkedin } from "react-icons/fa";
 
 import ScrollReveal from "@/components/ScrollReveal";
 
-const contactEmail = "jordan@example.com"; // TODO: Update with actual email
+const contactContent = {
+  title: "Contact",
+  email: "jordan@example.com", // TODO: Update with actual email
+  description:
+    "Interested in sustainable infrastructure solutions? Looking for a driven engineering student to join your team? Or just want to connect and discuss civil engineering challenges? Let's build something together.",
+  cta: "Feel free to reach out!",
+};
 
 const socialLinks = [
   {
@@ -21,7 +25,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    href: `mailto:${contactEmail}`,
+    href: `mailto:${contactContent.email}`,
     icon: FaEnvelope,
     isEmail: true,
   },
@@ -32,21 +36,18 @@ const ContactSection = () => {
     <section id="contact" className="relative py-24">
       <ScrollReveal stagger={0.1}>
         <h3 className="mb-7 text-2xl font-semibold text-white/90 md:text-3xl">
-          Contact
+          {contactContent.title}
         </h3>
         <p className="max-w-xl text-sm text-white/60">
-          Interested in sustainable infrastructure solutions? Looking for a
-          driven engineering student to join your team? Or just want to connect
-          and discuss civil engineering challenges? Let&apos;s build something
-          together.
+          {contactContent.description}
         </p>
 
         <div className="mt-6 text-white/80">
           <Link
-            href={`mailto:${contactEmail}`}
+            href={`mailto:${contactContent.email}`}
             className="transition-colors hover:text-[var(--accent-secondary)]"
           >
-            Feel free to reach out!
+            {contactContent.cta}
           </Link>
         </div>
 

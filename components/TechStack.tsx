@@ -90,6 +90,25 @@ const categoryColors = {
   fieldwork: "from-emerald-500 to-teal-400",
 };
 
+const categoryLabels = {
+  software: "Software",
+  engineering: "Engineering",
+  coursework: "Coursework",
+  fieldwork: "Fieldwork",
+};
+
+const sectionContent = {
+  intro: "I would love to join a",
+  highlight: "ground-breaking",
+  outro: "team",
+  tagline: "that values building infrastructure people can actually stand on",
+  curveToggleLabel: "Curve Style Preview",
+  curveOptions: {
+    quadratic: "Quadratic (Fan)",
+    cubic: "Cubic (S-Curve)",
+  },
+};
+
 // Define orbital configuration - which skills go on which ring
 const orbitConfig = {
   inner: [0, 1, 2, 3, 4], // 5 skills on inner ring
@@ -177,15 +196,13 @@ const TechStack = () => {
     <section id="lab" className="relative py-28">
       <ScrollReveal stagger={0.1} className="text-center">
         <p className="mb-6 text-white/70">
-          I would love to join a{" "}
+          {sectionContent.intro}{" "}
           <span className="text-[var(--accent-secondary)]">
-            ground-breaking
+            {sectionContent.highlight}
           </span>{" "}
-          team
+          {sectionContent.outro}
         </p>
-        <p className="mb-16 text-sm text-white/50">
-          that values building infrastructure people can actually stand on
-        </p>
+        <p className="mb-16 text-sm text-white/50">{sectionContent.tagline}</p>
 
         {/* Full visualization container */}
         <div
@@ -380,27 +397,23 @@ const TechStack = () => {
 
         {/* Category legend - positioned below orbital */}
         <div className="xs:mt-24 mt-16 flex flex-wrap justify-center gap-4 pt-8 text-xs text-white/50 sm:mt-32">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" />
-            Software
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]" />
-            Engineering
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-400" />
-            Coursework
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400" />
-            Fieldwork
-          </div>
+          {(
+            Object.keys(categoryLabels) as Array<keyof typeof categoryLabels>
+          ).map((key) => (
+            <div key={key} className="flex items-center gap-2">
+              <span
+                className={`h-2 w-2 rounded-full bg-gradient-to-r ${categoryColors[key]}`}
+              />
+              {categoryLabels[key]}
+            </div>
+          ))}
         </div>
 
         {/* Curve style toggle - for client preview */}
         <div className="mt-8 flex flex-col items-center gap-2">
-          <span className="text-xs text-white/40">Curve Style Preview</span>
+          <span className="text-xs text-white/40">
+            {sectionContent.curveToggleLabel}
+          </span>
           <div className="flex gap-2">
             <button
               type="button"
@@ -411,7 +424,7 @@ const TechStack = () => {
                   : "bg-[var(--card-bg)] text-white/60 hover:text-white"
               }`}
             >
-              Quadratic (Fan)
+              {sectionContent.curveOptions.quadratic}
             </button>
             <button
               type="button"
@@ -422,7 +435,7 @@ const TechStack = () => {
                   : "bg-[var(--card-bg)] text-white/60 hover:text-white"
               }`}
             >
-              Cubic (S-Curve)
+              {sectionContent.curveOptions.cubic}
             </button>
           </div>
         </div>
